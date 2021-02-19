@@ -48,13 +48,17 @@ export default {
     computed:{
         ...mapState(['email'])
     },
+    created(){
+        console.log(this.email)
+    },
     methods:{
         async register(){
-            if(this.sname.length == 0 || this.phone.length == 0 || this.gst.length == 0 || this.uid.length == 0 || this.ars.length == 0 || this.name.length == 0 || this.email.length == 0){
+            if(this.sname.length == 0 || this.phone.length == 0 || this.gst.length == 0 || this.uid.length == 0 || this.ars.length == 0 || this.name.length == 0 ){
                 alert("All fields are required")
                 return
             }
             try {
+                
                 const {data} = await axios.post("/api/shop",{
                 name :this.name,
                 sname :this.sname,
@@ -68,6 +72,7 @@ export default {
                 this.$store.commit("store",data.shop)
                 this.$router.push('/products')
             } catch (error) {
+
                 alert("Please enter data in proper format !")
             }
             

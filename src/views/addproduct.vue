@@ -52,6 +52,7 @@ export default {
                 await axios.post('/api/product',data)
                 this.$router.push('/products')
             } catch (error) {
+                
                 alert("Please enter data in proper format !")
             }
             console.log(data)

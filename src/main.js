@@ -22,6 +22,7 @@ Vue.config.productionTip = false
 firebase.auth().onAuthStateChanged(async function(user) {
   if (user) {
     // User is signed in.
+    store.commit("email",user.email)
     console.log("user signed in ")
     const {data} = await axios.post('/api/shop/verify',{
       email :user.email
