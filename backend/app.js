@@ -22,7 +22,7 @@ app.use('/', express.static(path.join(__dirname, '../dist')));
 app.use('/api/product',ProductRouter)
 app.use('/api/shop',ShopRouter)
 app.use('/api/invoice',InvoiceRouter)
-const uri = "'mongodb://localhost/payfast"
+const uri = "mongodb+srv://user:uvOyX5UA6I2mjplk@cluster0.azmit.mongodb.net/NUCLEUS?retryWrites=true&w=majority"
 
 mongoose.connect(uri, {
     useNewUrlParser: "true",

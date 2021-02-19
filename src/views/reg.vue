@@ -9,9 +9,7 @@
             <b-field label="Phone Number">
                 <b-input v-model="phone"></b-input>
             </b-field>
-            <b-field label="Email">
-                <b-input v-model="email"></b-input>
-            </b-field>
+           
             <b-field label="Shop's Name">
                 <b-input v-model="sname"></b-input>
             </b-field>
@@ -20,6 +18,9 @@
             </b-field>
             <b-field label="GSTIN">
                 <b-input v-model="gst"></b-input>
+            </b-field>
+            <b-field label="PIN CODE">
+                <b-input v-model="pin_code"></b-input>
             </b-field>
             <b-field label="Address">
                  <b-input maxlength="200" type="textarea" v-model="ars"></b-input>
@@ -30,6 +31,7 @@
 </template>
 <script>
 import axios from 'axios'
+import {mapState} from 'vuex'
 export default {
     data(){
         return {
@@ -39,8 +41,12 @@ export default {
             name:"",
             gst:"",
             uid:"",
-            email:""
+           
+            pin_code:""
         }
+    },
+    computed:{
+        ...mapState(['email'])
     },
     methods:{
         async register(){
@@ -49,16 +55,18 @@ export default {
                 return
             }
             try {
-                await axios.post("/api/shop",{
+                const {data} = await axios.post("/api/shop",{
                 name :this.name,
                 sname :this.sname,
                 phone :this.phone,
                 email: this.email,
                 gst : this.gst,
                 aadhar : this.uid,
+                pin_code : this.pin_code,
                 address:this.ars
-            })
-                console.log("reg done")
+            })  
+                this.$store.commit("store",data.shop)
+                this.$router.push('/products')
             } catch (error) {
                 alert("Please enter data in proper format !")
             }

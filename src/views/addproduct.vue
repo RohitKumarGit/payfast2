@@ -22,6 +22,7 @@
 </template>
 <script>
 import axios from 'axios'
+import {mapState} from 'vuex'
 export default {
     data(){
         return{
@@ -30,6 +31,9 @@ export default {
             price:"",
             unit:"Choose"
         }
+    },
+    computed:{
+        ...mapState(['shop'])
     },
     methods:{
         async add(){
@@ -41,8 +45,9 @@ export default {
                 name:this.name,
                 price:this.price,
                 unit:this.unit,
-                shop:"602e65f666e395e95867a97c"
+                shop:this.shop._id
             }
+            
             try {
                 await axios.post('/api/product',data)
                 this.$router.push('/products')

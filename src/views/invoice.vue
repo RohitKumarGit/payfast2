@@ -58,8 +58,9 @@ export default {
                     id:this.dt._id
                 })
                 console.log(data)
-               // this.$route.push('/product')
+                this.$router.push('/products')
             } catch (error) {
+                console.log(error)
                 alert("some error occured while processing payment")
             }
         }

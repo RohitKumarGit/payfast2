@@ -16,4 +16,23 @@ Router.post('/',async (req,res)=>{
         })
     }
 })
+Router.post('/verify',async (req,res)=>{
+    try {
+        const shop = await Shop.find({email:req.body.email})
+        if(shop.length == 0 ){
+            res.send({
+                new:true
+            
+            })
+        }
+        else {
+            res.send({
+                new:false,
+                shop:shop[0]
+            })
+        }
+    } catch (error) {
+        res.status(400).send()
+    }
+})
 module.exports = Router

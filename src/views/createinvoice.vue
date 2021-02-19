@@ -14,7 +14,7 @@
 import  axios from 'axios'
 import Fuse from 'fuse.js'
 import product from '@/components/product'
-
+import {mapState} from 'vuex'
 export default {
     data(){
         return {
@@ -25,6 +25,9 @@ export default {
             phone:"",
             maxs:0
         }
+    },
+    computed:{
+        ...mapState(['shop'])
     },
     components:{
         product
@@ -82,7 +85,7 @@ export default {
             try {
                 const {data} = await axios.get('/api/product',{
                     params:{
-                        id:"602e65f666e395e95867a97c"
+                        id:this.shop._id
                     }
                 })
                this.products = data.products

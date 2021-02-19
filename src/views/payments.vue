@@ -15,6 +15,7 @@
 <script>
 import paycard from '@/components/paycard'
 import axios from 'axios'
+import {mapState} from 'vuex'
 import Fuse from 'fuse.js'
 export default {
     data(){
@@ -29,6 +30,9 @@ export default {
     components:{
         paycard
     },
+    computed:{
+        ...mapState(['shop'])
+    },
     async created(){
         this.getData()
     },
@@ -37,7 +41,7 @@ export default {
             try {
             const {data} = await axios.get('/api/invoice',{
                 params:{
-                    id : "602e65f666e395e95867a97c"
+                    id : this.shop._id
                 }
             })
             console.log(data)

@@ -22,6 +22,7 @@
 <script>
 import {mapState} from 'vuex'
 import  axios from 'axios'
+
 export default {
     data(){
         return {
@@ -32,7 +33,7 @@ export default {
         }
     },
     computed:{
-        ...mapState(['selected',"total"])
+        ...mapState(['selected',"total","shop"])
     },
     methods:{
         async send(){
@@ -44,7 +45,7 @@ export default {
                const data = {
                    customer_name : this.name,
                    customer_phone : this.phone,
-                   shop_id          : "602e65f666e395e95867a97c",
+                   shop_id          : this.shop._id,
                    items:this.selected ,
                    discount : this.discount,
                    credit : this.credit,

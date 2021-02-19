@@ -41,6 +41,7 @@
 
 <script>
 import axios from 'axios'
+import {mapState} from 'vuex'
 export default {
     data(){
         return{
@@ -49,6 +50,9 @@ export default {
             price:"",
             unit:"Choose"
         }
+    },
+    computed:{
+        ...mapState(['shop'])
     },
     async created(){
         const {data} = await axios.get('/api/product/'+this.$route.params.id)

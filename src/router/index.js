@@ -10,11 +10,17 @@ import view from '@/views/view'
 import createinvoice from '@/views/createinvoice'
 import invoice from '@/views/invoice'
 import send from '@/views/send'
+import login from '@/views/login'
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
+    name: 'login',
+    component: login
+  },
+  {
+    path: '/register',
     name: 'reg',
     component: reg
   },

@@ -6,9 +6,17 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     selected:[],
-    total : 0
+    total : 0,
+    shop:{},
+    email:""
   },
   mutations: {
+    store(context,shop){
+      context.shop = shop
+    },
+    email(context,em){
+      context.email = em
+    },
     addp(context,item){
       context.selected.push({id:item._id,count:1})
       context.total+=item.price
