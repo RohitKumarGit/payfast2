@@ -1,0 +1,69 @@
+<template>
+    <div class="container m-2">
+        <div class="logo has-text-centered  is-size-4 has-text-weight-bold has-text-primary">PAYFAST</div>
+        <div class="sub-head has-text-centered line mt-2 mb-2 has-text-secondary has-text-weight-bold">Please provide us these details</div>
+        <section>
+            <b-field label="Owner's Name">
+                <b-input v-model="name"></b-input>
+            </b-field>
+            <b-field label="Phone Number">
+                <b-input v-model="phone"></b-input>
+            </b-field>
+            <b-field label="Email">
+                <b-input v-model="email"></b-input>
+            </b-field>
+            <b-field label="Shop's Name">
+                <b-input v-model="sname"></b-input>
+            </b-field>
+            <b-field label="Aadhar Number">
+                <b-input v-model="uid"></b-input>
+            </b-field>
+            <b-field label="GSTIN">
+                <b-input v-model="gst"></b-input>
+            </b-field>
+            <b-field label="Address">
+                 <b-input maxlength="200" type="textarea" v-model="ars"></b-input>
+            </b-field>
+             <b-button type="is-primary" expanded v-on:click="register">SUBMIT</b-button>
+        </section>
+    </div>
+</template>
+<script>
+import axios from 'axios'
+export default {
+    data(){
+        return {
+            sname :"",
+            phone:"",
+            ars:"",
+            name:"",
+            gst:"",
+            uid:"",
+            email:""
+        }
+    },
+    methods:{
+        async register(){
+            if(this.sname.length == 0 || this.phone.length == 0 || this.gst.length == 0 || this.uid.length == 0 || this.ars.length == 0 || this.name.length == 0 || this.email.length == 0){
+                alert("All fields are required")
+                return
+            }
+            try {
+                await axios.post("/api/shop",{
+                name :this.name,
+                sname :this.sname,
+                phone :this.phone,
+                email: this.email,
+                gst : this.gst,
+                aadhar : this.uid,
+                address:this.ars
+            })
+                console.log("reg done")
+            } catch (error) {
+                alert("Please enter data in proper format !")
+            }
+            
+        }
+    }
+}
+</script>

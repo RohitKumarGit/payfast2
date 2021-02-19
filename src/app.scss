@@ -1,0 +1,78 @@
+$color:#7957d5;
+.logo{
+    letter-spacing: .3rem;
+}
+.pay {
+    &_ct {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.mains {
+    position: relative;
+    min-height: 120vh;
+    padding-bottom: 4rem;
+}
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    padding: 0 .3rem;
+}
+.shop {
+    text-transform: uppercase;
+    
+}
+.bt_item.router-link-exact-active.router-link-active{
+    transition: all .2s ease-out;
+    &::after{
+        content: "";
+        display: block;
+        height: 3px;
+        width: 100%;
+        transform: translateY(.4rem);
+        background-color: $color;
+    }
+}
+.last{
+    &:last-of-type{
+     //   margin-bottom: 7rem;
+    }
+}
+.vm{
+    width: 6rem;
+}
+.bt{
+    z-index: 100;
+    position: fixed;
+    display: flex;
+    background: white;
+    justify-content: space-evenly;
+    width: 100%;
+  //  background-color: $color;
+   // position:absolute;
+    height: 3.6rem;
+    bottom: 0;
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    &_item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.line {
+    &::after{
+        display: block;
+        content: "";
+        height: 1px;
+        width: 70%;
+        background: $color;
+       
+        transform: translateX(23%);
+    }
+}
+.apart {
+    display: flex;
+    justify-content: space-between;
+}
