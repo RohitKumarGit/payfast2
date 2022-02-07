@@ -1,9 +1,10 @@
 <template>
-
-  <div id="app" :class="{mains:this.$route.name != 'login'}">
+  <div style="center">
+  <div id="app" :class="{mains:this.$route.name != 'login'} ">
   <topbar v-if="this.$route.name != 'reg' && this.$route.name != 'invoice' && this.$route.name != 'login'  "></topbar>
     <bottomnav v-if="this.$route.name != 'reg' && this.$route.name != 'invoice' && this.$route.name != 'login' "></bottomnav>
     <router-view/>
+  </div>
   </div>
 </template>
 <script>
